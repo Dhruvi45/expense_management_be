@@ -8,17 +8,22 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-
+const cors = require("cors");
 // Connect to database
 connectDB();
 
 // Middleware
+app.use(cors({ origin: "https://solid-computing-machine-w45p96p7gv5fgjxg-3000.app.github.dev"}));
 app.use(express.json());
 
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api/expenses', expenseRoutes);
 app.use('/api/categories', categoryRoutes);
+
+app.get("/", (req, res) => {
+    res.send("Hello, Express!");
+  });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
