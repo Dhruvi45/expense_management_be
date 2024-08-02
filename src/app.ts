@@ -13,7 +13,7 @@ const cors = require("cors");
 connectDB();
 
 // Middleware
-app.use(cors({ origin: "https://solid-computing-machine-w45p96p7gv5fgjxg-3000.app.github.dev"}));
+app.use(cors({}));
 app.use(express.json());
 
 // Routes
